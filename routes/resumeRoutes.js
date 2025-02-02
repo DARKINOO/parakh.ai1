@@ -12,7 +12,7 @@ router.post('/latest-resume', resumeController.getLatestResume);
 // In resumeRoutes.js
 router.get('/interview-questions', resumeController.getInterviewQuestions);
 router.get('/interview-questions/:resumeId', resumeController.getInterviewQuestions);
-router.post('/evaluate-answer', resumeController.evaluateAnswer);
+// router.post('/evaluate-answer', resumeController.evaluateAnswer);
 router.post('/submit-full-interview', resumeController.submitFullInterview);
 
 module.exports = router;

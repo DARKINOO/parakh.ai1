@@ -14,6 +14,7 @@ const ResumeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  cloudinaryPublicId: String,
   jobPreferences: {
     industry: String,
     position: String,

@@ -10,6 +10,23 @@ const InterviewPerformanceSchema = new mongoose.Schema({
     answers: [String],
     fullEvaluation: String,
     overallScore: Number,
+    scores: {
+        technicalScore: Number,
+        communicationScore: Number,
+        problemSolvingScore: Number,
+        culturalFitScore: Number,
+        leadershipScore: Number
+    },
+    feedback: {
+        strengths: [String],
+        improvements: [String],
+        detailedFeedback: {
+            clarity: String,
+            relevance: String,
+            depth: String,
+            communication: String
+        }
+    },
     performedAt: {
         type: Date,
         default: Date.now
