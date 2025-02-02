@@ -6,7 +6,8 @@ const corsOptions = {
             'http://localhost:5173',    // Vite default frontend port
             'http://127.0.0.1:5173',    // Localhost alternative
             'http://localhost:5174',    // Your actual frontend port
-            'http://127.0.0.1:5174'     // Localhost alternative
+            'http://127.0.0.1:5174',
+            'https://parakhai-1.vercel.app/'     // Localhost alternative
         ];
         
         // Allow requests with no origin (like mobile apps or curl requests)
