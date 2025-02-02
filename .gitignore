@@ -1,4 +1,4 @@
 node_modules
 .env
-temp/*
-!temp/.gitkeep
+# temp/*
+# !temp/.gitkeep
