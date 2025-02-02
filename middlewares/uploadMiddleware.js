@@ -1,15 +1,22 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
+const tempDir = path.join(__dirname, '..', 'temp');
+fs.chmodSync(tempDir, 0o777);
 
 // Configure multer for temporary storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'temp/') // Temporary storage before uploading to Cloudinary
+        cb(null,  path.join(__dirname, '..', 'temp')) // Temporary storage before uploading to Cloudinary
     },
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`)
     }
 });
+
+if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+}
 
 // Multer upload configuration
 const upload = multer({
