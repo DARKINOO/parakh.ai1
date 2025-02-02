@@ -85,24 +85,40 @@ const extractDetailedFeedback = (text) => {
 };
 
 const calculateScore = (text, category) => {
+    if (!text) return 70; // Default if no text
+    
     const categoryText = text.toLowerCase();
+    
+    // Extended weights with more variations
     const weights = {
         excellent: 90,
+        outstanding: 90,
+        exceptional: 90,
         strong: 85,
+        proficient: 85,
         good: 80,
         solid: 75,
         adequate: 70,
         average: 65,
         fair: 60,
-        poor: 50
+        poor: 50,
+        weak: 45,
+        insufficient: 40
     };
 
+    // Scoring based on positive/negative indicators
+    let baseScore = 70;
     for (const [term, score] of Object.entries(weights)) {
         if (categoryText.includes(term)) {
             return score;
         }
     }
-    return 70; // Default score if no matching terms found
+
+    // Fallback scoring based on sentiment
+    if (categoryText.includes('very') || categoryText.includes('highly')) baseScore += 10;
+    if (categoryText.includes('needs') || categoryText.includes('could')) baseScore -= 10;
+    
+    return Math.min(Math.max(baseScore, 40), 90);
 };
 
 exports.submitResume = async (req, res) => {
